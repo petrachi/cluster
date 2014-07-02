@@ -1,5 +1,5 @@
-require "cluster/version"
-
 module Cluster
-  # Your code goes here...
+  require "cluster/bundler"
+  require "cluster/version"
+  require "cluster/engine"
 end
