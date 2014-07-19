@@ -1,1 +1,3 @@
 nav
+  == Cluster.sections.to_grid.col_attributes class: ->(section){ section.attributes } do |section|
+    h3 = link_to section.to_label, section.path(self)

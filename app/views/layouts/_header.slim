@@ -1,0 +1,32 @@
+header
+	.grid
+		.grid-row
+			.grid-col-1
+				h1.text-center = link_to root_url do
+					== fa_icon 'globe'
+
+			.grid-col-10
+				h1 = link_to Cluster.name, root_url
+
+
+
+
+
+
+/ <header>
+/ 	<%= container_tag do %>
+/ 		<%= row_tag do %>
+/ 			<%= col_1_tag :id => :return do %>
+/ 				<h1 class="text-center">
+/ 					<%= link_to root_url(:subdomain => false) do %>
+/ 						<i class="icon-globe"></i>
+/ 					<% end %>
+/ 				</h1>
+/ 			<% end %>
+/
+/ 			<%= col_10_tag :id => :title, :append => 1 do %>
+/ 				<h1><%= link_to t("#{ @application }.title"), root_url %></h1>
+/ 			<% end %>
+/ 		<% end %>
+/ 	<% end %>
+/ </header>
