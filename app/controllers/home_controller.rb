@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @sections = []
+    @sections = Cluster::Section.each
   end
 end
