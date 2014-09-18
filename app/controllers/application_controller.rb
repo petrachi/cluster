@@ -7,11 +7,11 @@ class ApplicationController < ActionController::Base
 
 
   def index
-    @collection = model_klass.all
+    @collection = model_klass.collection_finder finder_params
   end
 
   def show
-    @obj = model_klass.tagged params[:tag]
+    @obj = model_klass.instance_finder finder_params
   end
 
 
@@ -22,5 +22,9 @@ class ApplicationController < ActionController::Base
       .const_get controller_name.classify
   rescue NameError
     nil
+  end
+
+  def finder_params
+    params.permit!.symbolize_keys
   end
 end

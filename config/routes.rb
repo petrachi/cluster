@@ -5,8 +5,21 @@ Rails.application.routes.draw do
     name = section.name.underscore
 
     controller name.pluralize do
-      get "/#{ name.pluralize }" => :index, as: name.pluralize
-      get "/#{ name }/:tag" => :show, as: name
+
+      index_path = "/#{ name.pluralize }"
+      index_path << "(/p/:pool)" if section.interfered? :pool
+
+      show_path = "/#{ name }"
+      show_path << if section.interfered? :tag
+        "/:tag"
+      else
+        "/:id"
+      end
+
+
+
+      get index_path => :index, as: name.pluralize
+      get show_path => :show, as: name
     end
   end
 end

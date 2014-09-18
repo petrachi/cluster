@@ -1,2 +1,4 @@
 .grid
   h2 = @obj.title
+  - if @obj.class.interfered? :pool 
+    p = @obj.pool_url
