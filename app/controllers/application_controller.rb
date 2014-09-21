@@ -17,14 +17,12 @@ class ApplicationController < ActionController::Base
 
   private
   def model_klass
-    (self.class.name.deconstantize.presence || 'Object')
-      .constantize
-      .const_get controller_name.classify
+    __namespace__.const_get controller_name.classify
   rescue NameError
     nil
   end
 
   def finder_params
-    params.permit!.symbolize_keys
+    params.permit(%i{id pool series tag}).symbolize_keys
   end
 end
