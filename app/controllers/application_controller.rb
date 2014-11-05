@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
 
   def index
     @collection = model_klass.collection_finder finder_params
+
+    if @collection.acts_as_paginables?
+      params[:page] ||= 1
+      @collection = @collection.paginate.page(params[:page].to_i).per_page(2)
+    end
+
+    @collection
   end
 
   def show
@@ -17,7 +24,7 @@ class ApplicationController < ActionController::Base
 
   private
   def model_klass
-    __namespace__.const_get controller_name.classify
+    __class__.namespace.const_get controller_name.classify
   rescue NameError
     nil
   end

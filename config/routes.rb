@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     controller name.pluralize do
 
       collection_path = "/#{ name.pluralize }"
-      collection_path << "(/p/:pool)" if section.interfered? :pool
-      collection_path << "(/s/:series)" if section.interfered? :series
+      collection_path << "(/p/:pool)" if section.acts_as_poolables?
+      collection_path << "(/s/:series)" if section.acts_as_seriables?
 
       instance_path = "/#{ name }"
-      instance_path << if section.interfered? :tag
+      instance_path << if section.acts_as_taggables?
         "/:tag"
       else
         "/:id"

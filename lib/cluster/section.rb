@@ -19,6 +19,24 @@ class Cluster::Section < SimpleDelegator
   end
 
 
+  def initialize name
+    super define_default_model(name)
+    define_default_controller
+  end
+
+  def define_default_model name
+    Object.const_get(name, default: Class.new(ActiveRecord::Base)).tap do |getobj|
+      getobj.instance_eval do
+        try_to_acts_as :decorables, :paginables, :poolables, :publishables, :taggables, :seriables
+      end
+    end
+  end
+
+  def define_default_controller
+    Object.const_get "#{ name.pluralize }Controller", default: Class.new(ApplicationController)
+  end
+
+
   alias :section :__getobj__
   attr_accessor :active
 

@@ -1,12 +1,12 @@
 .grid
   h2 = @obj.title
-  - if @obj.class.interfered? :pool
+  - if @obj.class.acts_as_poolables?
     h3 Pool
     p = @obj.link_to_pool
-  - if @obj.class.interfered? :publisher
+  - if @obj.class.acts_as_publishables?
     h3 publisher
     p = @obj.published_at
-  - if @obj.class.interfered? :series
+  - if @obj.class.acts_as_seriables?
     h3 series
     p = @obj.link_to_series
     p = @obj.pagination_tag
