@@ -1,4 +1,5 @@
 module Cluster
+  require 'cluster/active_record_extend'
   require 'cluster/bundler'
   require 'cluster/engine'
   require 'cluster/section'
@@ -19,5 +20,5 @@ module Cluster
 
   def self.sections
     @sections
-  end  
+  end
 end

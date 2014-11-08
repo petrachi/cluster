@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       collection_path = "/#{ name.pluralize }"
       collection_path << "(/p/:pool)" if section.acts_as_poolables?
       collection_path << "(/s/:series)" if section.acts_as_seriables?
+      collection_path << "(/n/:page)" if section.acts_as_paginables?
 
       instance_path = "/#{ name }"
       instance_path << if section.acts_as_taggables?
