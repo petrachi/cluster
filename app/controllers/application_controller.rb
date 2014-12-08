@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
     @collection = model_klass.collection_finder finder_params
   end
 
+  # TODO: dans les articles ..., faire un pouce vert/pouce rouger
+  # de base, c'est juste un graph de répartition, sur une ligne "+++--"(60%)
+  # mais quand on passe la souris dessus, ça se transforme en graph à barre, le graph 1d, passe en 2d
+  # "+++   "
+  # "+++ --"
+  # "+++ --" (60%)
+
   def show
     @obj = model_klass.instance_finder finder_params
   end

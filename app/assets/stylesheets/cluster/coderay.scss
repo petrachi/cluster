@@ -1,0 +1,92 @@
+.CodeRay{
+	background-color: #181818;
+	border: 1px solid black;
+	font-family: 'Courier New', 'Terminal', monospace;
+  text-align: left;
+	color: #E6E0DB;
+	padding: .5em 99em;
+	overflow: auto;
+	font-size: .9em;
+	margin: .75em -98em;
+	border-radius: 1px;
+
+	pre{
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.attribute-name{
+		color: #E7BE69;
+	}
+
+	.comment{
+		color: #5f5a60;
+		font-style: italic;
+	}
+
+	.escape{
+		color: #509E4F;
+	}
+
+	.class,
+	.function{
+		color: #9b703f; //ok
+	}
+
+	.constant{
+		color: #9b859d; // ok
+	}
+
+	.float{
+		color: #A4C260;
+	}
+
+	.global-variable{
+		color: #D0CFFE;
+	}
+
+	.instance-variable{
+		color: #7587a6; //ok
+	}
+
+	.doctype{
+		color: #E7BE69;
+	}
+
+	.keyword{
+		color: #cca869; //ok
+	}
+
+	.regexp{
+		color: #A4C260;
+	}
+
+	.string{
+		color: #8f9c6a; //ok
+	}
+
+	.integer,
+	.predefined-constant,
+	.symbol{
+		color: #cf6a4c; // ok
+	}
+
+	.tag{
+		color: #E7BE69;
+	}
+
+	.binary{
+		color: #6C9CBD;
+	}
+}
+
+span.CodeRay{
+	font-family: inherit;
+	background-color: transparent;
+	margin: 0;
+	padding: 0;
+	font-size: 1em;
+	border: none;
+	// font-style: italic;
+  white-space: nowrap;
+}

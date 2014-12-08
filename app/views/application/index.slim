@@ -1,6 +1,7 @@
 == @collection.to_grid do |obj|
   h2.text-center = obj.title
-  p = obj.brief
+  // p = raw obj.brief
+  = raw obj.brief
   p.text-center = obj.btn_to
 
 - if @collection.paginated?

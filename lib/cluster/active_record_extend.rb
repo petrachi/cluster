@@ -5,7 +5,8 @@ module ActiveRecordExtend
       .then(if: :acts_as_paginables?){ |collection| collection.paginate.page options[:page] || 1 }
       .then(if: :acts_as_poolables?){ |collection| collection.pool options[:pool] }
       .then(if: :acts_as_publishables?){ |collection| collection.published.publication_desc }
-      .then(if: :acts_as_seriables?){ |collection| collection.series options[:series] }
+      .then(if: :acts_as_seriables?){ |collection|
+        options[:series] && collection.series(options[:series]) || collection.firsts_of_series }
   end
 
   def instance_finder **options
