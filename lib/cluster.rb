@@ -1,24 +1,20 @@
 module Cluster
   require 'cluster/active_record_extend'
+  require 'cluster/active_record_nothing'
   require 'cluster/bundler'
+  require 'cluster/config'
   require 'cluster/engine'
   require 'cluster/section'
   require 'cluster/version'
 
 
-  def self.name= name
-    @name = name
+  def configure **options
+    options.each do |key, value|
+      Cluster::Config.instance.send(key, value)
+    end
+
+    $cluster = Cluster::Config.instance
   end
 
-  def self.name
-    @name
-  end
-
-  def self.sections= sections
-    @sections = sections.map{ |section| Cluster::Section.new section }
-  end
-
-  def self.sections
-    @sections
-  end
+  extend self
 end
