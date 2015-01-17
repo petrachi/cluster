@@ -1,0 +1,27 @@
+html,
+body{
+  background-image: url('identity.jpg');
+  background-size: cover;
+}
+
+#back_path{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  font-size: 1em;
+
+  margin: {
+    top: .625em;
+    bottom: .375em;
+  };
+
+  a{
+    display: inline-block;
+    padding: .625em {
+      bottom: .375em;
+    };
+
+    @include highlighted-link;
+  }
+}

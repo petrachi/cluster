@@ -1,0 +1,41 @@
+[data-action='application#show']{
+
+  height: auto;
+  min-height: 100%;
+
+  .grid{
+    min-height: 100%;
+  }
+
+  .grid-col-9{
+    @include highlighted-block;
+
+    width: calc(75% - 2em);
+  }
+
+  h1{
+    float: left;
+    width: 0;
+
+    font-size: 2em;
+
+    a:hover{
+      color: rgba(white-color(), .85);
+    }
+  }
+
+  h2,
+  h3{
+    @extend .text-center;
+  }
+
+  #published_at{
+    font-size: .5em;
+  }
+
+  p{
+    -webkit-column-width: 24rem;
+
+    font-size: .875em;
+  }
+}

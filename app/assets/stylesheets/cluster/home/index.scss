@@ -1,0 +1,14 @@
+[data-action='home#index']{
+
+  .grid{
+    height: 100%;
+  }
+
+  .section{
+    padding: 0;
+
+    a{
+      @include highlighted-link;
+    }
+  }
+}

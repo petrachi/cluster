@@ -1,0 +1,48 @@
+[data-action='application#index']{
+
+  .collection{
+    width: 100%;
+    @include verticaly-centered;
+  }
+
+  .object{
+    @include highlighted-link;
+
+    cursor: default;
+
+    &:hover{
+      text-decoration: none;
+    }
+
+    .btn:hover{
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+
+    display: flex;
+
+    .inner-object{
+      margin: auto;
+    }
+  }
+
+
+  .pagination{
+    width: 100%;
+
+    .btn{
+      font-weight: 100;
+
+      @include highlighted-link;
+    }
+
+    .btn-disabled,
+    .btn-disabled:hover{
+      font-weight: normal;
+
+      color: rgba(black-color(), .85);
+      background-color: transparent;
+    }
+  }
+}

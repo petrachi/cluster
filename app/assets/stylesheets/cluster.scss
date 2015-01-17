@@ -1,4 +1,8 @@
+@import "coderay";
 @import "compass";
 @import "font-awesome";
 
-@import "cluster/layouts";
+@import "cluster/layout";
+
+@import "cluster/application";
+@import "cluster/home";
