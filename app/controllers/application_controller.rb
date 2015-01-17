@@ -1,13 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  before_filter def set_section_active
-    Cluster::Section.active = model_klass
-  end
-
-
   def index
-    @collection = model_klass.collection_finder finder_params
+    @collection = model_klass.collection_finder (finder_params)
+    @collection = [ActiveRecordNothing.instance] if @collection.empty?
   end
 
   # TODO: dans les articles ..., faire un pouce vert/pouce rouger
@@ -18,17 +14,25 @@ class ApplicationController < ActionController::Base
   # "+++ --" (60%)
 
   def show
-    @obj = model_klass.instance_finder finder_params
+    @object = model_klass.instance_finder finder_params
+    @object = ActiveRecordNothing.instance if @object.blank?
   end
 
 
-  private def model_klass
+  protected def model_klass
     __class__.namespace.const_get controller_name.classify
   rescue NameError
     nil
   end
 
-  private def finder_params
+  protected def finder_params
     params.permit(%i{id page pool series tag}).symbolize_keys
+  end
+
+
+  def body_attributes
+    {
+      'data-action' => "#{ __class__.instance_method(action_name).owner.controller_name }##{ action_name }"
+    }
   end
 end

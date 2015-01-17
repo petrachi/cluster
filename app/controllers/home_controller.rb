@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @sections = Cluster::Section.each
+    @sections = $cluster.sections
   end
 end
