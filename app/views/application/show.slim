@@ -1,13 +1,29 @@
-.grid
-  h2 = @obj.title
-  - if @obj.class.acts_as_poolables?
-    h3 Pool
-    p = @obj.link_to_pool
-  - if @obj.class.acts_as_publishables?
-    h3 publisher
-    p = @obj.published_at
-  - if @obj.class.acts_as_seriables?
-    h3 series
-    p = @obj.link_to_series
-    p = @obj.pagination_tag
-    p = @obj.navigation_tag
+.grid.grid-flex.grid-items-stretch
+  .grid-col-9-off-3
+    h1
+      = link_to send("#{ controller.controller_name }_url") do
+        = fa_icon :'arrow-circle-left'
+
+
+    h2
+      = @object.title
+      - if @object.class.acts_as_publishables?
+        br
+        span#published_at = @object.published_at
+
+    == @object.content
+
+    - if @object.class.acts_as_seriables?
+      = @object.navigation_tag
+
+    / - if @object.class.acts_as_poolables?
+    /   h3 Pool
+    /   p = @object.link_to_pool
+    / - if @object.class.acts_as_publishables?
+    /   h3 publisher
+    /   p = @object.published_at
+    / - if @object.class.acts_as_seriables?
+    /   h3 series
+    /   p = @object.link_to_series
+    /   p = @object.pagination_tag
+    /   p = @object.navigation_tag

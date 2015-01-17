@@ -1,2 +1,8 @@
-== @sections.to_grid do |section|
-  == section
+h1#back_path.text-center
+  = link_to root_url(subdomain: :www) do
+    = fa_icon :globe
+    |  #{ $cluster.name }
+
+
+== @sections.to_grid.flex.items(:center).col_attributes(class: :section) do |section|
+    h2.text-center = link_to section.to_label, section.path(self)

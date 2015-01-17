@@ -1,13 +1,12 @@
 doctype html
 html
   head
+    title = $cluster.name
+
     == stylesheet_link_tag 'application'
     == javascript_include_tag 'application'
 
     == csrf_meta_tags
 
-  body
-
-    == render 'layouts/header'
-    == render 'layouts/nav'
-    == render 'layouts/section'
+  body *controller.body_attributes
+      == yield

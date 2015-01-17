@@ -1,8 +1,17 @@
-== @collection.to_grid do |obj|
-  h2.text-center = obj.title
-  // p = raw obj.brief
-  = raw obj.brief
-  p.text-center = obj.btn_to
+h1#back_path.text-center
+  = link_to root_url do
+    = fa_icon :'arrow-circle-left'
+    |  BACK
 
-- if @collection.paginated?
-  == @collection.pagination_tag
+.collection
+  == @collection.reverse.to_grid.flex.items(:stretch).col_attributes(class: %i(object display-block), href: :url.to_proc, tag: :a) do |object|
+    .inner-object
+      h2.text-center = object.title
+      == object.brief
+      p.text-center
+        span.btn discover
+
+  - if @collection.paginated?
+    == @collection.pagination_tag
+  - else
+    nav.pagination
