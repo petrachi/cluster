@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  Cluster::Section.each do |section|
-    name = section.name.underscore
+  $cluster.models.each do |model|
+    name = model.name.underscore
 
     controller name.pluralize do
 
       collection_path = "/#{ name.pluralize }"
-      collection_path << "(/p/:pool)" if section.acts_as_poolables?
-      collection_path << "(/s/:series)" if section.acts_as_seriables?
-      collection_path << "(/n/:page)" if section.acts_as_paginables?
+      collection_path << "(/s/:series)" if model.acts_as_seriables?
+      collection_path << "(/p/:page)" if model.acts_as_paginables?
+      collection_path << "(/o/:pool)" if model.acts_as_poolables?
 
       instance_path = "/#{ name }"
-      instance_path << if section.acts_as_taggables?
+      instance_path << if model.acts_as_taggables?
         "/:tag"
       else
         "/:id"
       end
-
 
 
       get collection_path => :index, as: name.pluralize
