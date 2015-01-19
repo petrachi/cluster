@@ -1,7 +1,8 @@
 html,
 body{
-  background-image: url('identity.jpg');
+  background-image: image-url('identity.jpg');
   background-size: cover;
+  background-position: 50% 0;
 }
 
 #back_path{

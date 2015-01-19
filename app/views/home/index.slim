@@ -4,5 +4,5 @@ h1#back_path.text-center
     |  #{ $cluster.name }
 
 
-== @sections.to_grid.flex.items(:center).col_attributes(class: :section) do |section|
+== @sections.to_grid.flex.items(:center).col_attributes(class: [:section, :name.to_proc]) do |section|
     h2.text-center = link_to section.to_label, section.path(self)

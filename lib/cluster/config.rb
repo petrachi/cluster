@@ -9,7 +9,7 @@ class Cluster::Config
     if sections
       @sections = sections.map{ |section| Cluster::Section.new section }
     else
-      @sections
+      @sections || []
     end
   end
 
