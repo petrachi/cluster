@@ -14,6 +14,20 @@
       text-decoration: none;
     }
 
+    .btn{
+      color: inherit;
+      background-color: transparent;
+      border: .09375em solid rgba(white-color(), .55);
+
+	    transition: .2s all ease;
+    }
+
+    &:hover .btn{
+      color: btn-color();
+      background-color: btn-background-color();
+      border-color: btn-background-color();
+    }
+
     .btn:hover{
       cursor: pointer;
       text-decoration: underline;

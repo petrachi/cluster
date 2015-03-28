@@ -3,7 +3,7 @@ module Cluster
     require 'cluster/active_record_extend'
     require 'cluster/active_record_nothing'
   end
-  
+
   require 'cluster/bundler'
   require 'cluster/config'
   require 'cluster/engine'
